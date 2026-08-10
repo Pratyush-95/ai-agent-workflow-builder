@@ -4,7 +4,7 @@ import "./App.css";
 import WorkflowBuilder from "./components/WorkflowBuilder";
 
 
-const API = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Old workflow ID - testing/fallback ke liye
 const DEFAULT_WORKFLOW_ID =
@@ -70,7 +70,7 @@ function App() {
     const fetchWorkflow = async () => {
       try {
         const response = await fetch(
-          `${API}/api/workflows/${workflowId}`
+          `${API_URL}/api/workflows/${workflowId}`
         );
 
         if (!response.ok) {
@@ -219,7 +219,7 @@ function App() {
       // ----------------------------------------
 
       const response = await fetch(
-        `${API}/api/workflows`,
+        `${API_URL}/api/workflows`,
         {
           method: "POST",
 
@@ -322,7 +322,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `${API}/api/workflows/${workflowId}/run`,
+        `${API_URL}/api/workflows/${workflowId}/run`,
         {
           method: "POST",
 
@@ -393,7 +393,7 @@ function App() {
       );
 
       const response = await fetch(
-        `${API}/api/workflows/approve-step`,
+        `${API_URL}/api/workflows/approve-step`,
         {
           method: "POST",
 
@@ -571,7 +571,7 @@ function App() {
       try {
         const response =
           await fetch(
-            `${API}/api/workflows/${workflowId}`
+            `${API_URL}/api/workflows/${workflowId}`
           );
 
         if (!response.ok) {
